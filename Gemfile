@@ -17,6 +17,10 @@ gem "redis", "~> 4.0"
 gem "bcrypt", "~> 3.1.7"
 gem "devise"
 gem "faker"
+gem "bootstrap-sass"
+gem "font-awesome-rails"
+gem "pry"
+gem "jquery-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
