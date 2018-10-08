@@ -21,6 +21,8 @@ gem "bootstrap-sass"
 gem "font-awesome-rails"
 gem "pry"
 gem "jquery-rails"
+gem "carrierwave"
+gem "cloudinary"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
