@@ -1,11 +1,14 @@
 class ReviewsController < ApplicationController
   before_action :check_logined, except: %i(index show destroy)
-  before_action :find_review, only: %i(edit update)
+  before_action :find_review, only: %i(edit update show)
   before_action :check_permission, only: %i(edit update)
 
 
   def new
     @review = current_user.reviews.new
+  end
+
+  def show
   end
 
   def create

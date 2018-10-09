@@ -1,0 +1,12 @@
+<% provide :title, @review.name %>
+
+<h5>Name: <%= @review.name %> </h5>
+<h5>Screen Size: <%= @review.screen_size %></h5>
+<h5>OS:  <%= @review.os %></h5>
+<h5>CPU: <%= @review.cpu %>  </h5>
+<h5>Battery: <%= @review.battery %></h5>
+<h5>Brand: <%= @review.brand.name %></h5>
+<h5>Review: <%= @review.review %> <br></h5>
+<h5>Price: <%= @review.price %></h5>
+<h5>By user: <%= @review.user.name %></h5>
+<%= cl_image_tag(@review.picture,:size => "200x180", :crop => :fill) if @review.picture? %> 
