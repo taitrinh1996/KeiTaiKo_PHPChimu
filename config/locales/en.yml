@@ -56,7 +56,7 @@ en:
       sign_in: "Already have an account?"
   users:
     registrations:
-      edit: 
+      edit:
         profile: "Profile"
         update: "Update"
         change_avatar: "Change Avatar"
@@ -65,3 +65,9 @@ en:
         sign_up: "Sign Up"
         alread_have_account: "Already have an account?"
         sign_in: "Sign In"
+    sessions:
+      new:
+        sign_in: "Login"
+        login: "Please enter your user name and password to login"
+        no_have: "Don't have an account?"
+        sign_up: " Sign Up Now"
