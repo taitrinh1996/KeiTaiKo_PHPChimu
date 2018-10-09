@@ -1,26 +1,40 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<% provide :title, t(".sign_in") %>
+<div class="login-page">
+  <div class="container-fluid">
+    <div class="row">
+      <%= image_tag "background_l.jpg", class: "col-xl-8 col-lg-8 col-md-7 overview-bgi cnt-bg-photo cnt-bg-photo-2 d-none d-xl-block d-lg-block d-md-block" %>
+      <div class="col-xl-4 col-lg-4 col-md-5 content-box">
+        <div class="content-form-box">
+          <h1 class="login-header"><%= t ".sign_in" %></h1>
+            <p><%= t ".login" %></p>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            </div>
+            <% if devise_mapping.rememberable? -%>
+              <div class="form-group">
+                <div class="form-check checkbox-theme">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+              </div>
+            <% end -%>
+            <div class="actions">
+              <%= f.submit t(".sign_in") %>
+            </div>
+          <% end %>
+          <div class="login-footer clearfix">
+            <div class="pull-right">
+              <p><%= t ".no_have" %><%= link_to t(".sign_up"), new_user_registration_path %></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
