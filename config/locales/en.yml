@@ -40,3 +40,10 @@ en:
     create:
       create_successfully: "Create review successfully"
       create_fail: "Can't create now. Please try again..."
+    edit:
+      not_permission: "You don't have permission to edit this review"
+      title: "Edit Review"
+      update_button: "Update"
+    update:
+      update_successfully: "Update successfully."
+      update_fail: "Can't update now. Please try again."
