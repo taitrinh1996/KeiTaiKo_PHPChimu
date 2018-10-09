@@ -1,46 +1,104 @@
 <% provide :title, t(".profile") %>
 
-<h2><%= t ".profile" %></h2>
+<div class="user-page content-area-14">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-5 col-sm-12">
+        <div class="user-profile-box mrb">
+          <!--header -->
+          <div class="header clearfix">
+            <h2><%= current_user.name %></h2>
+            <img src="<%= current_user.picture %>" alt="avatar" class="img-fluid profile-img">
+          </div>
+          <!-- Detail -->
+          <div class="detail clearfix">
+            <ul>
+              <li>
+                <%= link_to t(".profile"), edit_user_registration_path %>
+              </li>
+              <!-- <li>
+                <a href="my-properties.html">
+                <i class="flaticon-house"></i>My Properties
+                </a>
+              </li>
+              <li>
+                <a href="favorited-properties.html">
+                <i class="flaticon-heart-shape-outline"></i>Favorited Properties
+                </a>
+              </li>
+              <li>
+                <a href="submit-property.html">
+                <i class="flaticon-add"></i>Submit New Property
+                </a>
+              </li>
+              <li>
+                <a href="change-password.html">
+                <i class="flaticon-locked-padlock"></i>Change Password
+                </a>
+              </li> -->
+              <li>
+                <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-7 col-sm-12">
+        <div class="my-address contact-2 widget">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+            <h3 class="heading"><%= raw t ".profile" %></h3>
+            <div class="row">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+              <div class="col-lg-12 ">
+                <div class="form-group name">
+                  <%= f.label :name %><br />
+                  <%= f.text_field :name, class:"form-control", placeholder: current_user.name %>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group email">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: current_user.email, class:"form-control", readonly: true %>
+                </div>
+              </div>
+              <div class="col-lg-12 ">
+                <div class="form-group subject">
+                  <%= f.label :current_password %><br />
+                  <%= f.password_field :current_password, autocomplete: "off", class:"form-control" %>
+                </div>
+              </div>
+              <div class="col-lg-12 ">
+                <div class="form-group number">
+                  <%= f.label :password %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group message">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control" %>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group message">
+                  <%= f.label :avatar_update %>
+                  <%= f.file_field :picture %>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="send-btn">
+                  <%= f.submit t(".update"), class:"btn btn-lg btn-round btn-theme"  %>
+                </div>
+              </div>
 
-  <%= cl_image_tag(current_user.picture,:size => "260x180", :crop => :fill) if current_user.picture? %> 
-  <span class="picture">
-    <h5><%= t ".change_avatar" %></h5>
-    <%= f.file_field :picture %>
-  </span>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t(".update") %>
-  </div>
-<% end %>
-<%= render "users/shared/links" %>
+</div>
