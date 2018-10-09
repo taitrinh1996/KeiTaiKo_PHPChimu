@@ -32,6 +32,10 @@
 en:
   hello: "Hello world"
   sign_out: "Sign Out"
+  layouts:
+    header:
+      my_profile: "My Profile"
+      sign_out: "Sign Out"
   reviews:
     new:
       create_review: "New Reivew"
@@ -46,6 +50,10 @@ en:
     update:
       update_successfully: "Update successfully."
       update_fail: "Can't update now. Please try again."
+  static_pages:
+    show:
+      sign_up: "Sign Up Now!"
+      sign_in: "Already have an account?"
   users:
     registrations:
       edit: 
