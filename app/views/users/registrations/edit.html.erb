@@ -1,13 +1,29 @@
-<% provide :title, t(".sign_up") %>
+<% provide :title, t(".profile") %>
 
-<h2><%= t ".sign_up" %></h2>
+<h2><%= t ".profile" %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <%= cl_image_tag(current_user.picture,:size => "260x180", :crop => :fill) if current_user.picture? %> 
+  <span class="picture">
+    <h5><%= t ".change_avatar" %></h5>
+    <%= f.file_field :picture %>
+  </span>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="field">
@@ -23,13 +39,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
   <div class="actions">
-    <%= f.submit t(".sign_up") %>
+    <%= f.submit t(".update") %>
   </div>
 <% end %>
 <%= render "users/shared/links" %>
