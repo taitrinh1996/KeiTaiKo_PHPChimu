@@ -1,0 +1,53 @@
+<%= provide :title, t(".title") %>
+<h2><%= raw t(".title") %></h2>
+
+<%= form_for @review do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :screen_size %><br>
+    <%= f.number_field :screen_size, step: 0.1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :os %><br>
+    <%= f.text_field :os %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cpu %><br>
+    <%= f.text_field :cpu %>
+  </div>
+
+  <div class="field">
+    <%= f.label :battery %><br>
+    <%= f.text_field :battery %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brand %><br>
+    <%= f.select :brand_id, Brand.all.collect { |p| [ p.name, p.id ] }, :prompt => 'Select One' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :review %><br>
+    <%= f.text_field :review %>
+  </div>
+
+  <div class="field">
+    <%= f.label :picture %><br>
+    <%= f.file_field :picture %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t(".update_button") %>
+  </div>
+<% end %>
