@@ -1,0 +1,7 @@
+<div id="review-<%= @object.id %>">
+    <% if @object.liked_user.include? current_user %>
+      <%= render "likes/unlike" %>
+    <% else %>
+      <%= render "likes/like" %>
+    <% end %>
+</div>

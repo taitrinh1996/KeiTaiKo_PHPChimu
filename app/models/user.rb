@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :liked_review, through: :liked, source: :review
   has_many :commented, class_name: Comment.name, dependent: :destroy
   has_many :commented_review, through: :commented, source: :review
+  has_many :likes
 
   mount_uploader :picture, PictureUploader
 
