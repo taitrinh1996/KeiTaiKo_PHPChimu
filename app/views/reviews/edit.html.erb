@@ -13,8 +13,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :os %><br>
-    <%= f.text_field :os %>
+    <%= f.label :operator_system %><br>
+    <%= f.select :operator_system_id,
+      OperatorSystem.all.collect { |p| [ p.name, p.id ] },
+      :prompt => "Select One" %>
   </div>
 
   <div class="field">
