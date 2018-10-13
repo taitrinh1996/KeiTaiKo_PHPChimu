@@ -81,3 +81,8 @@ en:
     create:
       comment_success: "Comment successfully."
       comment_fail: "Can't comment now. Please try again."
+  likes:
+    like:
+      like_button: "Like"
+    unlike:
+      unlike_button: "Unlike"

@@ -1,0 +1,6 @@
+<% @like = @object.liked.where(user_id: current_user.id).first %>
+<%= form_for :like, url: like_path(@like.id), method: :delete, remote: true do |f| %>
+  <%= hidden_field_tag :like_id, @like.id %>
+  <%= hidden_field_tag :review_id, @object.id %>
+  <%= f.submit t(".unlike_button") %>
+<% end %>
