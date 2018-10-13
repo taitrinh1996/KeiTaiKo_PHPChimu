@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  ATTRIBUTES_PARAMS = %i(content user_id review_id parent_id)
   belongs_to :user
   belongs_to :review
 

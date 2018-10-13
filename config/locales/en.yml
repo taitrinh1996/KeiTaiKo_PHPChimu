@@ -43,6 +43,8 @@ en:
     create:
       create_successfully: "Create review successfully"
       create_fail: "Can't create now. Please try again..."
+    show:
+      send_comment: "Send Comment"
     edit:
       not_permission: "You don't have permission to edit this review"
       title: "Edit Review"
@@ -50,6 +52,8 @@ en:
     update:
       update_successfully: "Update successfully."
       update_fail: "Can't update now. Please try again."
+    messages:
+      review_not_found: "Can't find this review. Try again."
   static_pages:
     show:
       sign_up: "Sign Up Now!"
@@ -71,3 +75,9 @@ en:
         login: "Please enter your user name and password to login"
         no_have: "Don't have an account?"
         sign_up: " Sign Up Now"
+    messages:
+      review_not_found: "Can't find this user. Try again."
+  comments:
+    create:
+      comment_success: "Comment successfully."
+      comment_fail: "Can't comment now. Please try again."
