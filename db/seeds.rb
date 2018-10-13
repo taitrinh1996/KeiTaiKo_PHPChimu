@@ -30,11 +30,17 @@ end
   )
 end
 
+14.times do
+  OperatorSystem.create!(
+    name: Faker::Device.unique.platform
+  )
+end
+
 100.times do
   Review.create!(
     name: Faker::Device.model_name,
     picture: Faker::Avatar.image,
-    os: Faker::Device.platform,
+    operator_system_id: 1 + rand(14),
     brand_id: 1 + rand(5),
     user_id: 1 + rand(20),
     review: Faker::GameOfThrones.quote * 2,

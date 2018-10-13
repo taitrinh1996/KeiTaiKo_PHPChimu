@@ -9,6 +9,7 @@ class Review < ApplicationRecord
 
   belongs_to :user
   belongs_to :brand
+  belongs_to :operator_system
 
   mount_uploader :picture, PictureUploader
 
