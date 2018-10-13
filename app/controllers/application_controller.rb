@@ -23,4 +23,22 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     root_path
   end
+
+  def params_controller
+    params[:controller]
+  end
+
+  def find_variable_name
+    return if params_controller.blank?
+    params_controller.split("/").last.singularize
+  end
+
+  def find_object
+    instance_name = find_variable_name
+    instance_variable_set "@#{instance_name}",
+      instance_name.classify.constantize.find_by(id: params[:id])
+    return if instance_variable_get "@#{instance_name}"
+    flash[:danger] =
+      I18n.t("#{instance_name.pluralize}.messages.#{instance_name}_not_found")
+  end
 end
