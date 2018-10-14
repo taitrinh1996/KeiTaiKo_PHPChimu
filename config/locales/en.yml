@@ -45,6 +45,7 @@ en:
       create_fail: "Can't create now. Please try again..."
     show:
       send_comment: "Send Comment"
+      home: "Home"
     edit:
       not_permission: "You don't have permission to edit this review"
       title: "Edit Review"

@@ -1,4 +1,4 @@
-<header class="main-header sticky-header" id="main-header-2">
+<header class="main-header do-sticky" id="main-header-2">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -7,8 +7,8 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="fa fa-bars"></span>
           </button>
-          <div class="navbar-collapse collapse w-100" id="navbar">
-            <ul class="navbar-nav w-100 justify-content-center">
+          <div class="navbar-collapse collapse" id="navbar">
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Review
@@ -182,14 +182,11 @@
               </li>
               <% end %>
             </ul>
-            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-              <li class="nav-item">
-                <a class="open-offcanvas" href="#">
-                <span>Menu</span>
-                <span class="fa fa-bars"></span>
-                </a>
-              </li>
-            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <a href="#full-page-search" class=" my-2 my-sm-0">
+                <i class="fa fa-search"></i>
+              </a>
+            </form>
           </div>
         </nav>
       </div>

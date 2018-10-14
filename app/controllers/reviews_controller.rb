@@ -3,12 +3,13 @@ class ReviewsController < ApplicationController
   before_action :find_review, only: %i(edit update show)
   before_action :check_permission, only: %i(edit update)
 
-
   def new
     @review = current_user.reviews.new
   end
 
   def show
+    @review_recent = Review.last(3)
+    @brand_all = Brand.all
   end
 
   def create
