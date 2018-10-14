@@ -1,31 +1,179 @@
 <% provide :title, @review.name %>
 
-<h5>Name: <%= @review.name %> </h5>
-<h5>Screen Size: <%= @review.screen_size %></h5>
-<h5>OS:  <%= @review.operator_system.name %></h5>
-<h5>CPU: <%= @review.cpu %>  </h5>
-<h5>Battery: <%= @review.battery %></h5>
-<h5>Brand: <%= @review.brand.name %></h5>
-<h5>Review: <%= @review.review %> <br></h5>
-<h5>Price: <%= @review.price %></h5>
-<h5>By user: <%= @review.user.name %></h5>
-<%= cl_image_tag(@review.picture,:size => "200x180", :crop => :fill) if @review.picture? %> 
+<div class="sub-banner overview-bgi">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1><%= @review.name %></h1>
+            <ul class="breadcrumbs">
+                <li><%= link_to t(".home"), root_path %></li>
+                <li class="active"><%= @review.name %></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<%= form_for :comment, url: review_comments_path(@review.id) do |f| %>
-  <h2>Create comment</h2>
-  <%= f.label :content %><br />
-  <%= f.text_field :content, class: "form-control", placeholder: "Content..." %>
+<!-- Properties details page start -->
+<div class="properties-details-page content-area-16">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        <div id="propertiesDetailsSlider" class="carousel properties-details-sliders slide mb-60">
+          <div class="heading-properties">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pull-left">
+                  <h3><%= @review.name %></h3>
+                  <p><i class="fa fa-map-marker"></i>
+                    <%= @review.user.name %>
+                  </p>
+                </div>
+                <div class="p-r">
+                  <h3><%= @review.price %>VND</h3>
+                  <% if current_user %>
+                    <%= rating_for @review, "original_score", star: 5,  disable_after_rate: false %>
+                    <p><b>Total Vote:</b> <%= @review.rates("original_score").count %></p>
+                    <% unless @review.rates("original_score").count == 0 %>
+                    <p><b>Average Score:</b> <%= @review.average("original_score").avg %></p>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- main slider carousel items -->
+          <div class="carousel-inner">
+            <div class="active item carousel-item" data-slide-number="0">
+              <% if @review.picture? %>
+                <%= cl_image_tag(@review.picture,:size => "200x180", :crop => :fill, :class => "img-fluid") %>
+              <% else %>
+                <%= image_tag("banner-3.jpg", :class => "img-fluid") %>
+              <% end %>
+            </div>
+            <div class="item carousel-item" data-slide-number="1">
+              <img src="assets/img/property-6.jpg" class="img-fluid" alt="property-6">
+            </div>
+            <div class="item carousel-item" data-slide-number="2">
+              <img src="assets/img/property-1.jpg" class="img-fluid" alt="property-1">
+            </div>
+            <div class="item carousel-item" data-slide-number="4">
+              <img src="assets/img/property-5.jpg" class="img-fluid" alt="property-5">
+            </div>
+            <div class="item carousel-item" data-slide-number="5">
+              <img src="assets/img/property-8.jpg" class="img-fluid" alt="property-8">
+            </div>
+            <a class="carousel-control left" href="#propertiesDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+            <a class="carousel-control right" href="#propertiesDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+          </div>
+          <!-- main slider carousel nav controls -->
+          <ul class="carousel-indicators smail-properties list-inline nav nav-justified">
+            <li class="list-inline-item active">
+              <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#propertiesDetailsSlider">
+              <img src="assets/img/property-4.jpg" class="img-fluid" alt="property-4">
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a id="carousel-selector-1" data-slide-to="1" data-target="#propertiesDetailsSlider">
+              <img src="assets/img/property-6.jpg" class="img-fluid" alt="property-6">
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a id="carousel-selector-2" data-slide-to="2" data-target="#propertiesDetailsSlider">
+              <img src="assets/img/property-1.jpg" class="img-fluid" alt="property-1">
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a id="carousel-selector-3" data-slide-to="3" data-target="#propertiesDetailsSlider">
+              <img src="assets/img/property-5.jpg" class="img-fluid" alt="property-5">
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a id="carousel-selector-4" data-slide-to="4" data-target="#propertiesDetailsSlider">
+              <img src="assets/img/property-8.jpg" class="img-fluid" alt="property-8">
+              </a>
+            </li>
+          </ul>
+        </div>
 
-  <%= f.submit t(".send_comment") %>
-<% end %>
+        <!-- Property description start -->
+        <div class="property-description mb-60">
+          <h3 class="heading">Review</h3>
+          <p><%= @review.review %></p>
+        </div>
+        <!-- Property details start -->
+        <div class="property-details mb-60">
+          <h3 class="heading">Property Details</h3>
+          <div class="row">
+            <div class="col-md-4 col-sm-6">
+              <ul>
+                <li>
+                  <strong>Screen Size:</strong><%= @review.screen_size %>
+                </li>
+                <li>
+                  <strong>OS:</strong><%= @review.operator_system.name %>
+                </li>
+                <li>
+                  <strong>CPU:</strong><%= @review.cpu %>
+                </li>
+                <li>
+                  <strong>Battery:</strong><%= @review.battery %>
+                </li>
+                <li>
+                  <strong>Brand:</strong><%= @review.brand.name %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <%= form_for :comment, url: review_comments_path(@review.id) do |f| %>
+          <h2>Create comment</h2>
+          <%= f.label :content %><br />
+          <%= f.text_field :content, class: "form-control", placeholder: "Content..." %>
 
-<% @object = @review %>
-<%= render "likes/like_form" %>
+          <%= f.submit t(".send_comment") %>
+        <% end %>
 
-<% if current_user %>
-  Original Score: <%= rating_for @review, "original_score", star: 5,  disable_after_rate: false %>
-  Total Vote: <%= @review.rates("original_score").count %>
-  <% unless @review.rates("original_score").count == 0 %> 
-  Average Score: <%= @review.average("original_score").avg %>
-  <% end %>
-<% end %>
+        <% @object = @review %>
+        <%= render "likes/like_form" %>
+
+      </div>
+      <div class="col-lg-4 col-md-12">
+        <div class="sidebar mbl">
+          <!-- Categories start -->
+          <div class="widget categories">
+            <h5 class="sidebar-title">Brand</h5>
+            <ul>
+              <% @brand_all.each do |brand| %>
+                <li><a href="#"><%= brand.name %><span>(<%= brand.reviews.count %>)</span></a></li>
+              <% end %>
+            </ul>
+          </div>
+          <!-- Recent posts start -->
+          <div class="widget recent-posts">
+            <h5 class="sidebar-title">Recent Review</h5>
+            <% @review_recent.each do |review| %>
+              <div class="media mb-4">
+                <a class="pr-4" href="properties-details.html">
+                  <% if @review.picture? %>
+                    <%= cl_image_tag(review.picture, :class => "img-fluid") %>
+                  <% else %>
+                    <%= image_tag("banner-3.jpg", :class => "sub-property") %>
+                  <% end %>
+                </a>
+                <div class="media-body align-self-center">
+                  <h5>
+                    <a href="properties-details.html"><%= review.name %></a>
+                  </h5>
+                  <p><%= review.created_at %></p>
+                  <p> <strong><%= review.price %>VND</strong></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Properties details page start -->
+
+
