@@ -19,4 +19,6 @@ class Review < ApplicationRecord
   validates :user_id, presence: true
   validates :brand_id, presence: true
   validates :review, length: {maximum: 500}
+
+  ratyrate_rateable "original_score"
 end

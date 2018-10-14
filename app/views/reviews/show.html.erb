@@ -21,3 +21,11 @@
 
 <% @object = @review %>
 <%= render "likes/like_form" %>
+
+<% if current_user %>
+  Original Score: <%= rating_for @review, "original_score", star: 5,  disable_after_rate: false %>
+  Total Vote: <%= @review.rates("original_score").count %>
+  <% unless @review.rates("original_score").count == 0 %> 
+  Average Score: <%= @review.average("original_score").avg %>
+  <% end %>
+<% end %>
