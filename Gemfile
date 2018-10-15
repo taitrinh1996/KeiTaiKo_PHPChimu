@@ -24,6 +24,7 @@ gem "jquery-rails"
 gem "carrierwave"
 gem "cloudinary"
 gem "ratyrate"
+gem "kaminari"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

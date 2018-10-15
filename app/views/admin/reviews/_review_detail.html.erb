@@ -1,0 +1,82 @@
+<div class="col-lg-4 col-md-6 col-sm-12" id="<%= review.id %>-details">
+  <div class="property-box">
+    <div class="property-thumbnail">
+      <%= link_to review do %>
+        <div class="price-ratings-box">
+          <p class="price">
+            <%= review.name %>VND
+          </p>
+          <div class="ratings">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+        </div>
+        <%= image_tag("banner-1.jpg", class:"img-fluid") %>
+      <% end %>
+      <div class="property-overlay">
+        <%= link_to review, class:"overlay-link" do %> 
+          <i class="fa fa-link"></i>
+        <% end %>
+        <a class="overlay-link property-video" title="Test Title">
+        <i class="fa fa-video-camera"></i>
+        </a>
+        <div class="property-magnify-gallery">
+          <a href="assets/img/property-2.jpg" class="overlay-link">
+          <i class="fa fa-expand"></i>
+          </a>
+          <a href="assets/img/property-6.jpg" class="hidden"></a>
+          <a href="assets/img/property-4.jpg" class="hidden"></a>
+        </div>
+      </div>
+    </div>
+    <div class="detail">
+      <h1 class="title">
+        <%= link_to review do %><%= review.name %><% end %>
+      </h1>
+      <div class="location">
+        <a href="properties-details.html">
+        <i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
+        </a>
+      </div>
+      <ul class="facilities-list clearfix">
+        <li>
+          <i class="fa fa-crop"></i> <%= review.screen_size %>
+        </li>
+        <li>
+          <i class="fa fa-mobile"></i> <%= review.operator_system.name %>
+        </li>
+        <li>
+          <i class="fa fa-microchip"></i> <%= review.cpu %>
+        </li>
+        <li>
+          <i class="fa fa-battery-full"></i> <%= review.battery %>
+        </li>
+        <li>
+          <i class="fa fa-codepen"></i> <%= review.brand.name %>
+        </li>
+        <%= link_to admin_review_path(review), method: :put, remote: true do %>
+          <% if review.is_confirm? %>
+            <li>
+              <i class="fa fa-check-circle"></i> Checked
+            </li>
+          <% else %>
+            <li>
+              <i class="fa fa-ban"></i> Not Checked
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="footer">
+      <a href="#">
+      <i class="fa fa-user"></i> <%= review.user.name %>
+      </a>
+      <span>
+      <i class="fa fa-calendar-o"></i> <%= review.created_at.strftime("%H:%M %-d/%-m/%y") %>
+      </span>
+    </div>
+  </div>
+</div>

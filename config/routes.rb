@@ -6,4 +6,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
   resources :likes, only: [:create, :destroy]
+
+  namespace :admin do
+    resources :reviews, only: [:index, :update]
+  end
 end
