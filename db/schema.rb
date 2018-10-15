@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20181014032527) do
     t.string "name", null: false
     t.string "picture"
     t.integer "screen_size"
-    t.string "os"
+    t.string "operator_system_id"
     t.string "cpu"
     t.string "battery"
     t.integer "brand_id", null: false
