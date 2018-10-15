@@ -95,3 +95,10 @@ en:
       like_button: "Like"
     unlike:
       unlike_button: "Unlike"
+  admin:
+    reviews:
+      index:
+        manage_review: "Manage Review"
+        home: "Home"
+      check_admin:
+        not_permission: "You don't have permission to do this action"

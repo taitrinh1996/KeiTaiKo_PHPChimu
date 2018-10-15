@@ -1,0 +1,49 @@
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+  <div class="container">
+    <div class="breadcrumb-area">
+      <h1><%= t ".manage_review" %></h1>
+      <ul class="breadcrumbs">
+        <li><%= link_to t(".home"), root_path %></li>
+        <li class="active"><%= t ".manage_review" %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Sub banner end -->
+
+<div class="properties-list-fullwidth content-area-2">
+  <div class="container">
+    <div class="option-bar d-none d-xl-block d-lg-block d-md-block d-sm-block">
+      <div class="row clearfix">
+        <div class="col-xl-4 col-lg-5 col-md-5 col-sm-5">
+          <h4>
+            <span class="heading-icon">
+            <i class="fa fa-caret-right icon-design"></i>
+            <i class="fa fa-th-large"></i>
+            </span>
+            <span class="heading"><%= t ".manage_review" %></span>
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="subtitle">
+      <%= Review.all.count %> Result Found
+    </div>
+    <div class="row">
+      <% @reviews.each do |review| %>
+        <%= render "review_detail", review: review %>
+      <% end %>
+      <div class="col-lg-12">
+        <div class="pagination-box">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <%= paginate @reviews %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Properties list fullwidth end -->
