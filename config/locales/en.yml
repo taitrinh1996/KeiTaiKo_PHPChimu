@@ -36,6 +36,9 @@ en:
     header:
       my_profile: "My Profile"
       sign_out: "Sign Out"
+      sign_in: "Sign In"
+      sign_up: "Sign Up"
+      manage_review: "Manage Review"
   reviews:
     new:
       create_review: "New Review"

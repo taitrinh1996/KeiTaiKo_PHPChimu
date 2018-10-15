@@ -133,53 +133,26 @@
                   </div>
                 </div>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Classic</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="blog-classic-sidebar-right.html">Right Sidebar</a></li>
-                      <li><a class="dropdown-item" href="blog-classic-sidebar-left.html">Left Sidebar</a></li>
-                      <li><a class="dropdown-item" href="blog-classic-fullwidth.html">FullWidth</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Columns</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="blog-columns-2col.html">2 Columns</a></li>
-                      <li><a class="dropdown-item" href="blog-columns-3col.html">3 Columns</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Masonry</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="blog-masonry-2col.html">2 Masonry</a></li>
-                      <li><a class="dropdown-item" href="blog-masonry-3col.html">3 Masonry</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">Blog Details</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="blog-single-sidebar-right.html">Right Sidebar</a></li>
-                      <li><a class="dropdown-item" href="blog-single-sidebar-left.html">Left Sidebar</a></li>
-                      <li><a class="dropdown-item" href="blog-single-fullwidth.html">Fullwidth</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
               <% if user_signed_in? %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= current_user.name %>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                  <%= link_to t(".my_profile"), edit_user_registration_path, class:"dropdown-item" %>
-                  <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                </div>
-              </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= current_user.name %>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                    <%= link_to t(".my_profile"), edit_user_registration_path, class:"dropdown-item" %>
+                    <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <%= link_to t(".manage_review"), "#", class:"nav-link" %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to t(".sign_in"), new_user_session_path, class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to t(".sign_up"), new_user_registration_path, class:"nav-link" %>
+                </li>
               <% end %>
             </ul>
             <form class="form-inline my-2 my-lg-0">
