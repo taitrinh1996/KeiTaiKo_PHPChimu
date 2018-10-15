@@ -38,8 +38,12 @@ en:
       sign_out: "Sign Out"
   reviews:
     new:
-      create_review: "New Reivew"
+      create_review: "New Review"
       create: "Create"
+      create_r: "Create a Review?"
+      you_can: "You can create a review for the phone which you like"
+      picture: "Picture"
+      home: "Home"
     create:
       create_successfully: "Create review successfully"
       create_fail: "Can't create now. Please try again..."
