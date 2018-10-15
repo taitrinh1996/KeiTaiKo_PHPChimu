@@ -11,5 +11,4 @@ $(window).on('load', function () {
 	});
 
 	showPopupBought();
-
 });
