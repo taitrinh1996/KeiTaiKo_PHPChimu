@@ -1,2 +1,54 @@
 @import "bootstrap";
 @import "font-awesome";
+
+#popup-alert  {
+	position: fixed;
+	top: 2%;
+	right: -100%;
+	min-width: 310px;
+	opacity: 0;
+	z-index: 9999;
+	margin: 70px auto;
+	padding: 20px;
+	background: #fff;
+	border-radius: 5px;
+	width: 25%;
+	border: solid 2px rgba(128, 128, 128, 0.4);
+	transition: all 1s ease-in-out;
+}
+
+#popup-alert.show {
+	right: 3% !important;
+	opacity: 1 !important;
+}
+#popup-alert h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+#popup-alert .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+#popup-alert .close:hover {
+  color: #06D85F;
+}
+#popup-alert .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  #popup-alert{
+    width: 70%;
+  }
+}

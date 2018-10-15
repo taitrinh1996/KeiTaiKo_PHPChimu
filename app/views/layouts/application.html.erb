@@ -11,11 +11,16 @@
 
   <body>
     <%= render "layouts/header" %>
-    <div class="container">
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <div id="popup-alert" class="">
+          <h2><%= message_type %></h2>
+          <a class="close close-poup" href="javascript:void(0)">&times;</a>
+          <div class="content">
+            <%= message %>
+          </div>
+        </div>
       <% end %>
-    </div>
+
     <%= yield %>
     <%= render "layouts/footer" %>
   </body>
