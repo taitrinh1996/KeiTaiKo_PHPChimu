@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
   def show
     @review_recent = Review.last(3)
     @brand_all = Brand.all
+    @comments = review.comments.where(parent_id: nil)
   end
 
   def create

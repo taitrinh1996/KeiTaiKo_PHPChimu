@@ -26,6 +26,8 @@
                   <p><i class="fa fa-map-marker"></i>
                     <%= @review.user.name %>
                   </p>
+                  <% @object = @review %>
+                  <%= render "likes/like_form" %>
                 </div>
                 <div class="p-r">
                   <h3><%= @review.price %>VND</h3>
@@ -124,17 +126,99 @@
             </div>
           </div>
         </div>
-        <%= form_for :comment, url: review_comments_path(@review.id) do |f| %>
-          <h2>Create comment</h2>
-          <%= f.label :content %><br />
-          <%= f.text_field :content, class: "form-control", placeholder: "Content..." %>
-
-          <%= f.submit t(".send_comment") %>
-        <% end %>
-
-        <% @object = @review %>
-        <%= render "likes/like_form" %>
-
+        <div class="comments-section">
+          <h3 class="heading"><%= t ".comment_section" %></h3>
+          <ul class="comments">
+            <% @comments.each do |comment| %>
+              <li>
+                <div class="comment">
+                  <div class="comment-author">
+                    <a href="#">
+                    <% if comment.user.picture? %>
+                      <img src="assets/img/avatar/avatar-13.jpg" class="rounded-circle" alt="avatar-13">
+                    <% else %>
+                      <%= image_tag("https://2sao.vietnamnetjsc.vn/images/2018/06/26/00/39/dich-le-nhiet-ba-1.jpg", class:"rounded-circle") %>
+                    <% end %>
+                    </a>
+                  </div>
+                  <div class="comment-content">
+                    <div class="comment-meta">
+                      <div class="comment-meta-author">
+                        <%= comment.user.name %>
+                      </div>
+                      <div class="comment-meta-reply">
+                        <a href="#">Reply</a>
+                      </div>
+                      <div class="comment-meta-date">
+                        <span><%= comment.created_at.strftime("%H:%M %-d/%-m/%y") %></span>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="comment-body">
+                      <p><%= comment.content %></p>
+                    </div>
+                  </div>
+                </div>
+                <ul>
+                  <% Comment.find_sub_comments(comment.id).each do |sub_comment| %>
+                    <li>
+                      <div class="comment">
+                        <div class="comment-author">
+                          <a href="#">
+                          <% if sub_comment.user.picture? %>
+                            <img src="assets/img/avatar/avatar-13.jpg" class="rounded-circle" alt="avatar-13">
+                          <% else %>
+                            <%= image_tag("https://2sao.vietnamnetjsc.vn/images/2018/06/26/00/39/dich-le-nhiet-ba-1.jpg", class:"rounded-circle") %>
+                          <% end %>
+                          </a>
+                        </div>
+                        <div class="comment-content">
+                          <div class="comment-meta">
+                            <div class="comment-meta-author">
+                              <%= sub_comment.user.name %>
+                            </div>
+                            <div class="comment-meta-reply">
+                              <a href="#">Reply</a>
+                            </div>
+                            <div class="comment-meta-date">
+                              <span><%= sub_comment.created_at.strftime("%H:%M %-d/%-m/%y") %></span>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <div class="comment-body">
+                            <p><%= sub_comment.content %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="contact-3 mb-60">
+          <h3 class="heading"><%= t ".send_comment" %></h3>
+          <div class="container">
+            <div class="row">
+              <%= form_for :comment, url: review_comments_path(@review.id) do |f| %>
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group message">
+                      <%= f.label :content %><br />
+                      <%= text_area :comment, :content, :rows => 5, :cols => 70, class:"form-control", placeholder:"Write message" %>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="send-btn">
+                      <%= f.submit t(".send_comment"), class:"btn btn-color btn-md btn-message" %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-lg-4 col-md-12">
         <div class="sidebar mbl">
