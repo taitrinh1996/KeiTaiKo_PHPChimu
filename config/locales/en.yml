@@ -58,9 +58,13 @@ en:
       title: "Edit Review"
       update_button: "Update"
       home: "Home"
+      delete: "Delete this review"
     update:
       update_successfully: "Update successfully."
       update_fail: "Can't update now. Please try again."
+    destroy:
+      destroy_success: "Delete review successfully"
+      destroy_fail: "Delete review fail."
     messages:
       review_not_found: "Can't find this review. Try again."
   static_pages:
