@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
   attr_reader :comment, :review
 
   def find_review
-    binding.pry
     @review = Review.find_by id: params[:review_id]
   end
 

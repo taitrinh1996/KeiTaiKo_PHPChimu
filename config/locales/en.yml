@@ -51,8 +51,9 @@ en:
       create_successfully: "Create review successfully"
       create_fail: "Can't create now. Please try again..."
     show:
-      send_comment: "Send Comment"
+      send_comment: "Leave a Comment"
       home: "Home"
+      comment_section: "Comment Section"
     edit:
       not_permission: "You don't have permission to edit this review"
       title: "Edit Review"
