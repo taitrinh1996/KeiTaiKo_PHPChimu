@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :check_logined, except: %i(index show destroy)
-  before_action :find_review, only: %i(edit update show)
-  before_action :check_permission, only: %i(edit update)
+  before_action :find_review, except: %i(new create)
+  before_action :check_permission, only: %i(edit update destroy)
 
   def new
     @review = current_user.reviews.new
@@ -35,6 +35,15 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    if review.destroy
+      flash[:success] = t ".destroy_success"
+      redirect_to root_path
+    else
+      flash[:fail] = t ".destroy_fail"
+      redirect_to edit_review_path(review)
+    end
+  end
 
   private
 

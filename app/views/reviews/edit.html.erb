@@ -76,7 +76,8 @@
                   </div>
                 </div>
                 <div class="col-lg-12">
-                  <%= f.submit t(".update_button"),class: "btn btn-color btn-md" %>
+                  <%= f.submit t(".update_button"), class: "btn btn-color btn-md" %>
+                  <%= link_to t(".delete"), review_path(@review), class: "btn btn-md", method: :delete %>
                 </div>
               <% end %>
             </div>
