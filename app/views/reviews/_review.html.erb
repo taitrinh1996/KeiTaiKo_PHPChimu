@@ -1,0 +1,55 @@
+<div class="property-box-5">
+  <div class="row">
+      <div class="col-lg-5 col-md-5 col-pad">
+          <div class="property-thumbnail">
+              <a href="properties-details.html" class="property-img">
+                <p class="price">
+                    <%= review.price %> VND
+                </p>
+                <% if review.picture? %>
+                  <%= cl_image_tag(review.picture, :class => "img-fluid") %>
+                <% else %>
+                  <%= image_tag("banner-3.jpg", :class => "sub-property") %>
+                <% end %>
+              </a>
+              <div class="property-overlay">
+                  <a href="properties-details.html" class="overlay-link">
+                      <i class="fa fa-link"></i>
+                  </a>
+                  <a class="overlay-link property-video" title="Test Title">
+                      <i class="fa fa-video-camera"></i>
+                  </a>
+                  <div class="property-magnify-gallery">
+                      <a href="assets/img/property-1.jpg" class="overlay-link">
+                          <i class="fa fa-expand"></i>
+                      </a>
+                      <a href="assets/img/property-6.jpg" class="hidden"></a>
+                      <a href="assets/img/property-4.jpg" class="hidden"></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-7 col-md-7 align-self-center col-pad">
+          <div class="detail">
+              <h1 class="title">
+                  <a href="properties-details.html"><%= review.name %></a>
+              </h1>
+              <p><%= review.review %></p>
+              <ul class="facilities-list clearfix">
+                  <li>
+                    <%= review.operator_system.name %>
+                  </li>
+                  <li>
+                    <%= review.cpu %>
+                  </li>
+                  <li>
+                    <%= review.brand.name %>
+                  </li>
+                  <li>
+                     <%= review.battery %>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>

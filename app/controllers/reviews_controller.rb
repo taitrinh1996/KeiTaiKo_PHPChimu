@@ -2,14 +2,17 @@ class ReviewsController < ApplicationController
   before_action :check_logined, except: %i(index show destroy)
   before_action :find_review, except: %i(new create)
   before_action :check_permission, only: %i(edit update destroy)
+  before_action :show_action, only: %i(index show) 
+
+  def index
+    @reviews = Review.select_info.order_by_created_at.page params[:page]
+  end
 
   def new
     @review = current_user.reviews.new
   end
 
   def show
-    @review_recent = Review.last(3)
-    @brand_all = Brand.all
     @comments = review.comments.where(parent_id: nil)
   end
 
@@ -63,5 +66,10 @@ class ReviewsController < ApplicationController
       flash[:danger] = t(".not_permission")
       redirect_to root_path
     end
+  end
+
+  def show_action
+    @review_recent = Review.last(3)
+    @brand_all = Brand.all
   end
 end

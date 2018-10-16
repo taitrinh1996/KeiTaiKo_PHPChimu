@@ -1,0 +1,28 @@
+<div class="sub-banner overview-bgi">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>Properties Listing</h1>
+            <ul class="breadcrumbs">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Properties Listing</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="properties-list-rightside content-area-2">
+    <div class="container">
+        <div class="row">
+          <ul class="list-inline-listing filters filteriz-navigation">
+            <% @brand_all.each do |brand| %>
+              <li data-filter="1" class="btn btn-inline filtr-button filtr"><%= brand.name %></li>
+            <% end %>
+          </ul>
+          <div class="col-lg-8 col-md-12">
+              <%= render @reviews %>
+              <%= paginate @reviews %>
+          </div>
+          <%= render "rightside" %>
+        </div>
+    </div>
+</div>
