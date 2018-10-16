@@ -135,7 +135,7 @@
                   <div class="comment-author">
                     <a href="#">
                     <% if comment.user.picture? %>
-                      <img src="assets/img/avatar/avatar-13.jpg" class="rounded-circle" alt="avatar-13">
+                    <%= cl_image_tag(comment.user.picture, :class => "rounded-circle") %>
                     <% else %>
                       <%= image_tag("https://2sao.vietnamnetjsc.vn/images/2018/06/26/00/39/dich-le-nhiet-ba-1.jpg", class:"rounded-circle") %>
                     <% end %>
@@ -147,6 +147,9 @@
                         <%= comment.user.name %>
                       </div>
                       <div class="comment-meta-reply">
+                        <% if comment.user == current_user %>
+                          <%= link_to t(".delete_comment"), comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                        <% end %>
                         <a href="#">Reply</a>
                       </div>
                       <div class="comment-meta-date">
@@ -166,7 +169,7 @@
                         <div class="comment-author">
                           <a href="#">
                           <% if sub_comment.user.picture? %>
-                            <img src="assets/img/avatar/avatar-13.jpg" class="rounded-circle" alt="avatar-13">
+                            <%= cl_image_tag(sub_comment.user.picture, :class => "rounded-circle") %>
                           <% else %>
                             <%= image_tag("https://2sao.vietnamnetjsc.vn/images/2018/06/26/00/39/dich-le-nhiet-ba-1.jpg", class:"rounded-circle") %>
                           <% end %>
@@ -178,6 +181,9 @@
                               <%= sub_comment.user.name %>
                             </div>
                             <div class="comment-meta-reply">
+                              <% if sub_comment.user == current_user %>
+                                <%= link_to t(".delete_comment"), comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                              <% end %>
                               <a href="#">Reply</a>
                             </div>
                             <div class="comment-meta-date">

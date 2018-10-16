@@ -54,6 +54,7 @@ en:
       send_comment: "Leave a Comment"
       home: "Home"
       comment_section: "Comment Section"
+      delete_comment: "Delete Comment"
     edit:
       not_permission: "You don't have permission to edit this review"
       title: "Edit Review"
@@ -95,6 +96,11 @@ en:
     create:
       comment_success: "Comment successfully."
       comment_fail: "Can't comment now. Please try again."
+    destroy:
+      delete_success: "Delete comment successfully"
+      delete_fail: "Can't delete comment now. Please try again."
+    check_permission:
+      not_permission: "You don't have permission to delete this comment."
   likes:
     like:
       like_button: "Like"

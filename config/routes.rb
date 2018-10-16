@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root "static_pages#show"
   devise_for :users
   resources :reviews do
-    resources :comments, only: [:create]
+    resources :comments, only: :create
   end
+  resources :comments, only: :destroy
   resources :likes, only: [:create, :destroy]
 
   namespace :admin do
