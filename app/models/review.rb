@@ -21,4 +21,8 @@ class Review < ApplicationRecord
   validates :review, length: {maximum: 500}
 
   ratyrate_rateable "original_score"
+
+  scope :select_info, ->{select :name, :picture, :screen_size, :operator_system_id,
+    :cpu, :battery, :brand_id, :review, :price }
+  scope :order_by_created_at, ->{order created_at: :desc}
 end

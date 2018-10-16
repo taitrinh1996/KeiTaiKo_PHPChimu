@@ -220,41 +220,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-12">
-        <div class="sidebar mbl">
-          <!-- Categories start -->
-          <div class="widget categories">
-            <h5 class="sidebar-title">Brand</h5>
-            <ul>
-              <% @brand_all.each do |brand| %>
-                <li><a href="#"><%= brand.name %><span>(<%= brand.reviews.count %>)</span></a></li>
-              <% end %>
-            </ul>
-          </div>
-          <!-- Recent posts start -->
-          <div class="widget recent-posts">
-            <h5 class="sidebar-title">Recent Review</h5>
-            <% @review_recent.each do |review| %>
-              <div class="media mb-4">
-                <a class="pr-4" href="properties-details.html">
-                  <% if @review.picture? %>
-                    <%= cl_image_tag(review.picture, :class => "img-fluid") %>
-                  <% else %>
-                    <%= image_tag("banner-3.jpg", :class => "sub-property") %>
-                  <% end %>
-                </a>
-                <div class="media-body align-self-center">
-                  <h5>
-                    <a href="properties-details.html"><%= review.name %></a>
-                  </h5>
-                  <p><%= review.created_at %></p>
-                  <p> <strong><%= review.price %>VND</strong></p>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render "rightside" %>
     </div>
   </div>
 </div>
