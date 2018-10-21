@@ -25,4 +25,12 @@ class Review < ApplicationRecord
   scope :select_info, ->{select :name, :picture, :screen_size, :operator_system_id,
     :cpu, :battery, :brand_id, :review, :price }
   scope :order_by_created_at, ->{order created_at: :desc}
+
+  def self.checked_review
+    where is_confirm: true
+  end
+
+  def self.unchecked_review
+    where is_confirm: false
+  end
 end

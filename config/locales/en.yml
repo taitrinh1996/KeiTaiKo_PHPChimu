@@ -111,5 +111,9 @@ en:
       index:
         manage_review: "Manage Review"
         home: "Home"
+        all_review: "All Review"
+        checked_review: "Checked Review"
+        unchecked_review: "Unchecked Review"
+        result_found: "Result Found"
       check_admin:
         not_permission: "You don't have permission to do this action"

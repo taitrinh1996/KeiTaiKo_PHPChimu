@@ -3,11 +3,12 @@ class Admin::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.order("created_at DESC").page params[:page]
+    @checked_reviews = Review.checked_review.order("created_at DESC").page params[:page]
+    @unchecked_reviews = Review.unchecked_review.order("created_at DESC").page params[:page]
   end
 
   def update
     @review = Review.find_by id: params[:id]
-    binding.pry
     review.toggle(:is_confirm)
     if review.save
       respond_to do |format|
