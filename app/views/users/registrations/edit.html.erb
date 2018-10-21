@@ -89,12 +89,16 @@
                   <%= f.file_field :picture %>
                 </div>
               </div>
-              <div class="col-lg-12">
+              <div class="col-lg-6">
                 <div class="send-btn">
                   <%= f.submit t(".update"), class:"btn btn-lg btn-round btn-theme"  %>
                 </div>
               </div>
-
+              <div class="col-lg-6">
+                <div class="send-btn">
+                  <%= button_to t(".delete_account"), user_registration_path, method: :delete, :data => {:confirm => 'Are you sure?'}, class:"btn btn-lg btn-round btn-theme" %>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>
