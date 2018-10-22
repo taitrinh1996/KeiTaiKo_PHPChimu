@@ -49,6 +49,15 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def form_reply
+    @parent_comment = Comment.find_by id: params[:parent_cmt_id]
+    @reply_review = Review.find_by id: params[:review_id]
+    @reply_comment = current_user.comments.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   attr_reader :review
