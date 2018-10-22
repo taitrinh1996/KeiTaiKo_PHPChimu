@@ -11,9 +11,11 @@ class Admin::ReviewsController < ApplicationController
     @review = Review.find_by id: params[:id]
     review.toggle(:is_confirm)
     if review.save
-      respond_to do |format|
-        format.js
-      end
+      flash[:success] = t ".confirmed"
+      redirect_to admin_reviews_path
+    else
+      flash[:danger] = t ".confirm_fail"
+      redirect_to admin_reviews_path
     end
   end
 

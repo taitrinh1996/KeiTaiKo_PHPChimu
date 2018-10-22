@@ -26,7 +26,7 @@
               <a href="properties-details.html"><%= review.name %></a>
             </h5>
             <p><%= review.created_at %></p>
-            <p> <strong><%= review.price %>VND</strong></p>
+            <p> <strong><%= t "admin.reviews.review_detail.price_str", price: price_review(review.price) %>VND</strong></p>
           </div>
         </div>
       <% end %>
