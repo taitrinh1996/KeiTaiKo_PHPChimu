@@ -4,7 +4,7 @@
           <div class="property-thumbnail">
               <a href="properties-details.html" class="property-img">
                 <p class="price">
-                    <%= review.price %> VND
+                    <%= t "admin.reviews.review_detail.price_str", price: price_review(review.price) %>
                 </p>
                 <% if review.picture? %>
                   <%= cl_image_tag(review.picture, :class => "img-fluid") %>

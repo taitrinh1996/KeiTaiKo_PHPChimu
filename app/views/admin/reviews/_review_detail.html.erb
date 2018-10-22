@@ -4,7 +4,7 @@
       <%= link_to review do %>
         <div class="price-ratings-box">
           <p class="price">
-            <%= review.price %>VND
+            <%= t ".price_str", price: price_review(review.price) %>
           </p>
           <div class="ratings">
             <i class="fa fa-star"></i>

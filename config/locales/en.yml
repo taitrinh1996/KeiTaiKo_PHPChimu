@@ -117,3 +117,8 @@ en:
         result_found: "Result Found"
       check_admin:
         not_permission: "You don't have permission to do this action"
+      update:
+        confirmed: "You have just confirmed that review."
+        confirm_fail: "Somethings errors.... Please try again."
+      review_detail:
+        price_str: "%{price}VND"
