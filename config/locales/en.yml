@@ -56,6 +56,7 @@ en:
       home: "Home"
       comment_section: "Comment Section"
       delete_comment: "Delete Comment"
+      reply: "Reply"
     edit:
       not_permission: "You don't have permission to edit this review"
       title: "Edit Review"
@@ -70,6 +71,8 @@ en:
       destroy_fail: "Delete review fail."
     messages:
       review_not_found: "Can't find this review. Try again."
+    form_reply:
+      reply_comment: "Reply Comment"
   static_pages:
     show:
       sign_up: "Sign Up Now!"

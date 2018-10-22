@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :reviews do
     resources :comments, only: :create
+    get "form_reply"
   end
   resources :comments, only: :destroy
   resources :likes, only: [:create, :destroy]
