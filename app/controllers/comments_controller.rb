@@ -4,14 +4,10 @@ class CommentsController < ApplicationController
   before_action :check_permission, only: :destroy
 
   def create
-    @comment = review.comments.new comments_params
-    comment.user = current_user
-    if comment.save
-      flash[:success] = t ".comment_success"
-      redirect_to review_path(params[:review_id])
+    if params[:comment].present?
+      create_comment
     else
-      flash[:danger] = t ".comment_fail"
-      redirect_to review_path(params[:review_id])
+      create_reply_comment
     end
   end
 
@@ -47,5 +43,34 @@ class CommentsController < ApplicationController
 
   def comments_params
     params.require(:comment).permit Comment::ATTRIBUTES_PARAMS
+  end
+
+  def reply_comment_params
+    params.require(:reply_comment).permit Comment::ATTRIBUTES_PARAMS
+  end
+
+  def create_comment
+    @comment = review.comments.new comments_params
+    comment.user = current_user
+    if comment.save
+      flash[:success] = t ".comment_success"
+      redirect_to review_path(params[:review_id])
+    else
+      flash[:danger] = t ".comment_fail"
+      redirect_to review_path(params[:review_id])
+    end
+  end
+
+  def create_reply_comment
+    @comment = review.comments.new reply_comment_params
+    comment.user = current_user
+    comment.parent_id = params[:parent_comment_id]
+    if comment.save
+      flash[:success] = t ".comment_success"
+      redirect_to review_path(params[:review_id])
+    else
+      flash[:danger] = t ".comment_fail"
+      redirect_to review_path(params[:review_id])
+    end
   end
 end

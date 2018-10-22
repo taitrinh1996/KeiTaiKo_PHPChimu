@@ -16,7 +16,9 @@
     </div>
     <div class="clearfix"></div>
     <div class="comment-body">
-      <%= form_for @reply_comment, url: review_comments_path(@reply_review.id) do |f| %>
+      <%= form_for :reply_comment, url: review_comments_path(@reply_review.id) do |f| %>
+      <%= hidden_field_tag :parent_comment_id,
+        @parent_comment.id %>
         <%= text_area :reply_comment, :content, :rows => 2, :cols => 70, 
           class:"form-control", placeholder: "Write message" %>
         <%= f.submit t(".reply_comment"), class:"btn btn-color btn-md btn-message" %>
