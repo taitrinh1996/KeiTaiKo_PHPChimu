@@ -79,6 +79,7 @@ en:
         profile: "Profile"
         update: "Update"
         change_avatar: "Change Avatar"
+        delete_account: "Delete Account"
       new:
         create_your_account: "Create Your account"
         sign_up: "Sign Up"
