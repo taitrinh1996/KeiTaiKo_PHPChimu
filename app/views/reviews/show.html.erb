@@ -30,7 +30,7 @@
                   <%= render "likes/like_form" %>
                 </div>
                 <div class="p-r">
-                  <h3><%= @review.price %>VND</h3>
+                  <h3><%= t "price_str", price: price_review(@review.price) %></h3>
                   <% if current_user %>
                     <%= rating_for @review, "original_score", star: 5,  disable_after_rate: false %>
                     <p><b>Total Vote:</b> <%= @review.rates("original_score").count %></p>
