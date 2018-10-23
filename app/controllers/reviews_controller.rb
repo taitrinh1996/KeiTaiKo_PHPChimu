@@ -2,10 +2,10 @@ class ReviewsController < ApplicationController
   before_action :check_logined, except: %i(index show destroy)
   before_action :find_review, except: %i(new create)
   before_action :check_permission, only: %i(edit update destroy)
-  before_action :show_action, only: %i(index show) 
+  before_action :show_action, only: %i(index show)
 
   def index
-    @reviews = Review.select_info.order_by_created_at.page params[:page]
+    @reviews = Review.order("created_at DESC").page params[:page]
   end
 
   def new

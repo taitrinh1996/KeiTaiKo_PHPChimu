@@ -2,54 +2,68 @@
   <div class="row">
       <div class="col-lg-5 col-md-5 col-pad">
           <div class="property-thumbnail">
-              <a href="properties-details.html" class="property-img">
-                <p class="price">
-                    <%= t "admin.reviews.review_detail.price_str", price: price_review(review.price) %>
+            <div class="property-img">
+              <div class="price-ratings-box">
+                <p>
+                  <%= t "admin.reviews.review_detail.price_str", price: price_review(review.price) %>
                 </p>
-                <% if review.picture? %>
-                  <%= cl_image_tag(review.picture, :class => "img-fluid") %>
-                <% else %>
-                  <%= image_tag("banner-3.jpg", :class => "sub-property") %>
-                <% end %>
-              </a>
-              <div class="property-overlay">
-                  <a href="properties-details.html" class="overlay-link">
-                      <i class="fa fa-link"></i>
-                  </a>
-                  <a class="overlay-link property-video" title="Test Title">
-                      <i class="fa fa-video-camera"></i>
-                  </a>
-                  <div class="property-magnify-gallery">
-                      <a href="assets/img/property-1.jpg" class="overlay-link">
-                          <i class="fa fa-expand"></i>
-                      </a>
-                      <a href="assets/img/property-6.jpg" class="hidden"></a>
-                      <a href="assets/img/property-4.jpg" class="hidden"></a>
-                  </div>
               </div>
+              <% if review.picture? %>
+                <%= cl_image_tag(review.picture, :class => "img-fluid") %>
+              <% else %>
+                <%= image_tag("banner-3.jpg", :class => "sub-property") %>
+              <% end %>
+            </div>
+            <div class="property-overlay">
+              <%= link_to review, class:"overlay-link" do %>
+                  <i class="fa fa-link"></i>
+              <% end %>
+                <a class="overlay-link property-video" title="Test Title">
+                    <i class="fa fa-video-camera"></i>
+                </a>
+                <div class="property-magnify-gallery">
+                  <a href="assets/img/property-1.jpg" class="overlay-link">
+                    <i class="fa fa-expand"></i>
+                  </a>
+                  <a href="assets/img/property-6.jpg" class="hidden"></a>
+                  <a href="assets/img/property-4.jpg" class="hidden"></a>
+                </div>
+            </div>
           </div>
       </div>
       <div class="col-lg-7 col-md-7 align-self-center col-pad">
-          <div class="detail">
-              <h1 class="title">
-                  <a href="properties-details.html"><%= review.name %></a>
-              </h1>
-              <p><%= review.review %></p>
-              <ul class="facilities-list clearfix">
-                  <li>
-                    <%= review.operator_system.name %>
-                  </li>
-                  <li>
-                    <%= review.cpu %>
-                  </li>
-                  <li>
-                    <%= review.brand.name %>
-                  </li>
-                  <li>
-                     <%= review.battery %>
-                  </li>
-              </ul>
+        <div class="detail">
+          <h1 class="title">
+            <%= link_to review do %><%= review.name %><% end %>
+          </h1>
+          <p><%= review.review %></p>
+          <div class="location">
+            <a href="properties-details.html">
+            <i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
+            </a>
           </div>
+          <div class="ratings fa">
+            <%= rating_for_user review, current_user, "original_score" %>
+          </div>
+          <ul class="facilities-list clearfix">
+            <li>
+              <i class="fa fa-crop"></i> <%= review.screen_size %>
+            </li>
+            <li>
+              <i class="fa fa-mobile"></i> <%= review.operator_system.name %>
+            </li>
+            <li>
+              <i class="fa fa-microchip"></i> <%= review.cpu %>
+            </li>
+            <li>
+              <i class="fa fa-battery-full"></i> <%= review.battery %>
+            </li>
+            <li>
+              <i class="fa fa-codepen"></i> <%= review.brand.name %>
+            </li>
+          </ul>
+        </div>
       </div>
   </div>
 </div>
+
